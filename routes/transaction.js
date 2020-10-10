@@ -42,11 +42,11 @@ router.post("/", upload.none(), function(request, response) {
             response.json({ success: false, error:"Необходима авторизация" });
         else{// если авторизованный пользователь существует
             if (reg.test(sum)) {
-                let currentUserId = currentUser.user_id;// получить id текущего пользователя
+                let currentUserId = currentUser.id;// получить id текущего пользователя
                 //добавление существующей транзакцию к списку и записывание в БД
                 transactions.push({
                     id: uniqid(),
-                    type: type.toUpperCase(),
+                    type: type,
                     name,
                     sum: +sum,
                     account_id,

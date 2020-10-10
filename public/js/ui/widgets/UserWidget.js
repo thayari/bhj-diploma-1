@@ -11,7 +11,11 @@ class UserWidget {
    * необходимо выкинуть ошибку.
    * */
   constructor( element ) {
-
+    if (element) {
+      this.element = element;
+    } else {
+      throw Error('Ошибка: передан несуществующий элемент.')
+    }
   }
 
   /**
@@ -22,6 +26,7 @@ class UserWidget {
    * авторизованного пользователя
    * */
   update() {
-
+    let user = User.current();
+    document.querySelector('.user-name').textContent = user.name;
   }
 }
